@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 07, 2021 at 11:58 AM
+-- Generation Time: Feb 16, 2021 at 11:30 PM
 -- Server version: 10.4.17-MariaDB
--- PHP Version: 7.4.13
+-- PHP Version: 8.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,8 +39,21 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`Aid`, `Aname`, `Aemail`, `Apass`) VALUES
-(2, 'Hemanga', 'admin@admin.com', 'admin'),
-(8, 'Rabina', 'rabina@gmail.com', 'rabina');
+(9, 'ADMIN', 'Admin@admin.com', 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customers`
+--
+
+CREATE TABLE `customers` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -53,15 +66,8 @@ CREATE TABLE `message` (
   `name` varchar(255) NOT NULL,
   `mail` varchar(255) NOT NULL,
   `sub` varchar(255) NOT NULL,
-  `msg` varchar(255) NOT NULL
+  `msg` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `message`
---
-
-INSERT INTO `message` (`id`, `name`, `mail`, `sub`, `msg`) VALUES
-(7, 'hema', 'axc@x.com', 'acc', 'hello');
 
 -- --------------------------------------------------------
 
@@ -71,6 +77,7 @@ INSERT INTO `message` (`id`, `name`, `mail`, `sub`, `msg`) VALUES
 
 CREATE TABLE `reservation_table` (
   `Rev_id` int(11) NOT NULL,
+  `Acid` int(11) NOT NULL,
   `Rev_name` varchar(255) NOT NULL,
   `Rev_email` varchar(255) NOT NULL,
   `Rev_phone` int(11) NOT NULL,
@@ -86,13 +93,6 @@ CREATE TABLE `reservation_table` (
   `Room_total` int(11) NOT NULL,
   `status` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `reservation_table`
---
-
-INSERT INTO `reservation_table` (`Rev_id`, `Rev_name`, `Rev_email`, `Rev_phone`, `Rev_IdnPan`, `Rev_Add`, `Rev_Sdate`, `Rev_Edate`, `rev_adults`, `rev_child`, `rev_totalguest`, `Rev_roomno`, `Rev_roomtype`, `Room_total`, `status`) VALUES
-(51, 'Bora', 'Bora@1.c', 123456789, 'DEWNJB', 'torajan', '2021-02-01', '2021-02-04', 2, 1, 3, 107, 'Double', 3000, 2);
 
 -- --------------------------------------------------------
 
@@ -113,24 +113,10 @@ CREATE TABLE `room_table` (
 --
 
 INSERT INTO `room_table` (`Roomid`, `RoomNo`, `RoomType`, `RoomPrice`, `Room_status`) VALUES
-(327, 101, 'Single Bed', '500', 0),
-(328, 102, 'Single Bed', '500', 0),
-(329, 103, 'Single Bed', '500', 0),
-(330, 105, 'Single Bed', '500', 0),
-(331, 104, 'Single Bed', '500', 0),
-(332, 106, 'Single Bed', '500', 0),
-(333, 107, 'Double Bed', '1000', 0),
-(334, 108, 'Double Bed', '1000', 0),
-(335, 109, 'Double Bed', '1000', 0),
-(336, 110, 'Double Bed', '1000', 0),
-(337, 111, 'Double Bed', '1000', 0),
-(338, 112, 'Double Bed', '1000', 0),
-(339, 113, 'King Size Bed', '3000', 0),
-(340, 114, 'King Size Bed', '3000', 0),
-(341, 115, 'King Size Bed', '3000', 0),
-(342, 116, 'King Size Bed', '3000', 0),
-(343, 117, 'King Size Bed', '3000', 0),
-(344, 118, 'King Size Bed', '3000', 0);
+(327, 101, 'Single Bed', '500', 1),
+(328, 202, 'Double Bed', '1000', 1),
+(329, 303, 'King Size Bed', '2000', 1),
+(330, 102, 'Single Bed', '100', 0);
 
 -- --------------------------------------------------------
 
@@ -146,6 +132,13 @@ CREATE TABLE `staff` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Dumping data for table `staff`
+--
+
+INSERT INTO `staff` (`id`, `s_name`, `s_position`, `s_contact`) VALUES
+(6, 'test', 'Housekeeping Manager', '123');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -154,6 +147,12 @@ CREATE TABLE `staff` (
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`Aid`);
+
+--
+-- Indexes for table `customers`
+--
+ALTER TABLE `customers`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `message`
@@ -187,31 +186,37 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `Aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `Aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `customers`
+--
+ALTER TABLE `customers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `reservation_table`
 --
 ALTER TABLE `reservation_table`
-  MODIFY `Rev_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `Rev_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `room_table`
 --
 ALTER TABLE `room_table`
-  MODIFY `Roomid` int(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=345;
+  MODIFY `Roomid` int(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=331;
 
 --
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
