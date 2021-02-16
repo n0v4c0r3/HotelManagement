@@ -1,5 +1,8 @@
 <?php
+error_reporting(0);
 include('Database.php');
+
+session_start();
 
 if(isset($_POST["bookroom"]))
 {
@@ -12,7 +15,7 @@ if(isset($_POST["bookroom"]))
 
 if(isset($_POST["adddroom"]))
 {
-  
+  $acid =  $_POST["aid"];
   $RoomID = $_POST["rid"];
 
   $Roomno = $_POST["rno"];
@@ -43,12 +46,13 @@ if(isset($_POST["adddroom"]))
   $totalprice = $totalday * $price;
  
   // insert data
-  $sql = "INSERT INTO `reservation_table`(`Rev_name`, `Rev_email`, `Rev_phone`, `Rev_IdnPan`, `Rev_Add`, `Rev_Sdate`, `Rev_Edate`, `rev_adults`, `rev_child`, `rev_totalguest`, `Rev_roomno`, `Rev_roomtype`, `Room_total`, `status`) 
-  VALUES ('$Cname','$Cmail','$Cphone','$Cidn','$Caddrs','$Cindate','$Coutdate','$Cadult','$Cchild','$totalguest','$Roomno','$RoomType','$totalprice','0')";
+  $sql = "INSERT INTO `reservation_table`(`Acid`,`Rev_name`, `Rev_email`, `Rev_phone`, `Rev_IdnPan`, `Rev_Add`, `Rev_Sdate`, `Rev_Edate`, `rev_adults`, `rev_child`, `rev_totalguest`, `Rev_roomno`, `Rev_roomtype`, `Room_total`, `status`) 
+  VALUES ('$acid','$Cname','$Cmail','$Cphone','$Cidn','$Caddrs','$Cindate','$Coutdate','$Cadult','$Cchild','$totalguest','$Roomno','$RoomType','$totalprice','0')";
   $conn->query($sql);
   echo '
   <script>
   alert("Room Confirmation Will Be Notified on EMail or Phone");
+  window.location.href = "/account.php";
   </script>';
 
   // Disable room
@@ -96,15 +100,31 @@ if(isset($_POST["adddroom"]))
             <a class="nav-link" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/index.php#about">About Us</a>
+            <a class="nav-link" href="/#about">About Us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/index.php#room">Rooms</a>
+            <a class="nav-link" href="/#room">Rooms</a>
           </li>
-          
           <li class="nav-item">
-            <a class="nav-link" href="/index.php#contactus">Contact Us</a>
+            <a class="nav-link" href="/#contactus">Contact Us</a>
           </li>
+          <?php
+          if(!$_SESSION["uid"])
+          {
+            echo '
+            <li class="nav-item">
+            <a class="nav-link" href="Login.php">Login</a>
+             </li>';
+          }
+          else
+          {
+            echo '
+            <li class="nav-item">
+            <a class="nav-link" href="account.php">'.$_SESSION["uname"].'</a>
+            </li>';
+          }
+          ?>
+         
         </ul>
 
       </div>
@@ -117,6 +137,7 @@ if(isset($_POST["adddroom"]))
     <div class="row">
       <div class="col m-5">
         <form method="POST" action="">
+          <input type="hidden" name="aid" value="<?php echo $_SESSION["uid"] ?>">
           <input type="hidden" name="rid" value="<?php echo $roomid ?>">
 
           <div class="form-group row">

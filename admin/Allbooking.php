@@ -20,7 +20,7 @@ if(isset($_POST["Delete"]))
 
             <div class="card mb-4">
                 <div class="card-header">
-                    <i class="fas fa-home mr-1"></i>
+                    <i class="fas fa-bars mr-1"></i>
                     All Customers
                 </div>
                 <div class="card-body">
@@ -92,8 +92,8 @@ if(isset($_POST["Delete"]))
                                                         
                                                         <form action="viewdetails.php" method="POST" class="d-inline"> 
                                                             <input type="hidden" name="id" value='. $row["Rev_id"] .'>
-                                                            <button type="submit" class="btn btn-info" name="View" value="View">
-                                                            <i class="fas fa-eye"></i> View/Confirm
+                                                            <button type="submit" class="btn btn-danger" name="View" value="View">
+                                                            REJECTED
                                                             </button>
                                                         </form>
 

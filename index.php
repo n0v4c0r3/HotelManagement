@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <?php
+error_reporting(0);
 include('Database.php');
-$msg = '';
+
+session_start();
+
 if(isset($_POST["sendmsg"]))
 {
   $name = $_POST["name"];
   $email = $_POST["email"];
   $subject = $_POST["subject"];
   $msg = $_POST["message"];
+  
+  $msg = $conn->real_escape_string($_POST["message"]);
 
   $sql = "INSERT INTO `message`(`name`, `mail`, `sub`, `msg`) VALUES ('$name','$email','$subject','$msg')";
   $conn->query($sql);
@@ -60,6 +65,23 @@ if(isset($_POST["sendmsg"]))
           <li class="nav-item">
             <a class="nav-link" href="#contactus">Contact Us</a>
           </li>
+          <?php
+          if(!$_SESSION["uid"])
+          {
+            echo '
+            <li class="nav-item">
+            <a class="nav-link" href="Login.php">Login</a>
+             </li>';
+          }
+          else
+          {
+            echo '
+            <li class="nav-item">
+            <a class="nav-link" href="account.php">'.$_SESSION["uname"].'</a>
+            </li>';
+          }
+          ?>
+         
         </ul>
 
       </div>
@@ -198,11 +220,10 @@ if(isset($_POST["sendmsg"]))
             <!-- Message -->
             <div class="form-group label-floating">
               <label for="message" class="control-label">Message</label>
-              <textarea class="form-control" rows="3" id="message" name="message" required
+              <textarea class="form-control" rows="3" maxlength="500" id="message" name="message" required
                 data-error="Write your message"></textarea>
               <div class="help-block with-errors"></div>
             </div>
-            <p class="text-success"><?php echo $msg; ?></p>
             <!-- Form Submit -->
             <div class="form-submit mt-5">
               <button class="btn btn-succes" type="submit" name="sendmsg"> Send Message</button>

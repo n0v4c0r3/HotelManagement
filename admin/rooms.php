@@ -23,7 +23,7 @@ if(isset($_POST["delete"]))
 
             <div class="card mb-4">
                 <div class="card-header">
-                    <i class="fas fa-table mr-1"></i>
+                    <i class="fas fa-hotel mr-1"></i>
                     Available All Rooms
                     <a href="addroom.php" class="btn btn-primary m-2 " name="adddroom">Add Room</a>
                 </div>
@@ -57,25 +57,37 @@ if(isset($_POST["delete"]))
 
                                                 echo '
                                                 <td>'.$row["RoomType"].'</td>
-                                                <td>'.$row["RoomPrice"].'</td>
-                                                <td>
+                                                <td>'.$row["RoomPrice"].'</td>';
 
-                                                <form action="" method="post" class="d-inline">
-                                                    <input type="hidden" name="id" value='.$row["Roomid"].'>
-                                                    <button class="btn btn-danger" name="delete" type="submit">
-                                                    <i class="fas fa-trash"></i>
-                                                    </button>
-                                                </form>
+                                                if($row["Room_status"] == 0)
+                                                {
+                                                    echo '<td>
 
-                                                <form action="editroom.php" method="POST" class="d-inline"> 
-                                                    <input type="hidden" name="id" value='. $row["Roomid"] .'>
-                                                    <button type="submit" class="btn btn-info" name="Edit" value="edit">
-                                                    <i class="fas fa-pen"></i>
-                                                    </button>
-                                                </form>
-                                                </td>
+                                                    <form action="" method="post" class="d-inline">
+                                                        <input type="hidden" name="id" value='.$row["Roomid"].'>
+                                                        <button class="btn btn-danger" name="delete" type="submit">
+                                                        <i class="fas fa-trash"></i>
+                                                        </button>
+                                                    </form>
+    
+                                                    <form action="editroom.php" method="POST" class="d-inline"> 
+                                                        <input type="hidden" name="id" value='. $row["Roomid"] .'>
+                                                        <button type="submit" class="btn btn-info" name="Edit" value="edit">
+                                                        <i class="fas fa-pen"></i>
+                                                        </button>
+                                                    </form>
+                                                    </td>';
+                                                }
+                                                else 
+
+                                                if($row["Room_status"] == 1){
+                                                    
+                                                    echo '<td class="text-secondary">Disable</td>';
+                                                }
+
+                                               
                                                 
-                                            </tr>';
+                                            echo '</tr>';
 
                                             }
                                            

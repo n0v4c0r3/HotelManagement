@@ -98,7 +98,7 @@ $totalguest = $result["totalguest"];
                         <div class="card-body">Total Earnings</div>
                         <div class="card-footer d-flex align-items-center justify-content-between">
                             <h2 class="text-white stretched-link" href="#"><?php echo $totalincome; ?></h2>
-                            <a class="text-white stretched-link" href="rooms.php">
+                            <a class="text-white stretched-link" href="Allbooking.php">
                                 <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                             </a>
                         </div>
@@ -109,7 +109,7 @@ $totalguest = $result["totalguest"];
                         <div class="card-body">Total guests</div>
                         <div class="card-footer d-flex align-items-center justify-content-between">
                             <h2 class="text-white stretched-link" href="#"><?php echo $totalguest; ?></h2>
-                            <a class="text-white stretched-link" href="rooms.php">
+                            <a class="text-white stretched-link" href="Allbooking.php">
                                 <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                             </a>
                         </div>

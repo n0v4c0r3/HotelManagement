@@ -24,7 +24,7 @@ include('Database.php');
 
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand" href="index.html">RIVERWAYS RETREAT</a>
+        <a class="navbar-brand" href="/admin/">RIVERWAYS RETREAT</a>
         <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i
                 class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
@@ -56,37 +56,37 @@ include('Database.php');
 
                         <div class="sb-sidenav-menu-heading">manage</div>
                         <a class="nav-link" href="rooms.php">
-                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-hotel"></i></div>
                             All Room
                         </a>
                         <a class="nav-link" href="addroom.php">
-                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-plus-circle"></i></div>
                             Add Room
                         </a>
                         <a class="nav-link" href="BookRequest.php">
-                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-calendar-alt"></i></div>
                             New Booking
                         </a>
                         <a class="nav-link" href="bookings.php">
-                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-tasks"></i></div>
                             Manage Bookings
                         </a>
                         <a class="nav-link" href="Allbooking.php">
-                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-bars"></i></div>
                             All Bookings
                         </a>
                         </a>
                         <a class="nav-link" href="staff.php">
-                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-concierge-bell"></i></div>
                             Staff
                         </a>
                         </a>
                         <a class="nav-link" href="admin.php">
-                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-users-cog"></i></div>
                             Admin
                         </a>
                         <a class="nav-link" href="messages.php">
-                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-comment-alt"></i></div>
                             Messages
                         </a>
                     </div>

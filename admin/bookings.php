@@ -20,7 +20,7 @@ if(isset($_POST["Delete"]))
 
             <div class="card mb-4">
                 <div class="card-header">
-                    <i class="fas fa-home mr-1"></i>
+                    <i class="fas fa-tasks mr-1"></i>
                     All Customers
                 </div>
                 <div class="card-body">

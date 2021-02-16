@@ -39,7 +39,7 @@ if(isset($_POST["adddroom"]))
 
             <div class="card mb-4">
                 <div class="card-header">
-                    <i class="fas fa-home mr-1"></i>
+                    <i class="fas fa-plus-circle mr-1"></i>
                     Add Room
                 </div>
                 <div class="card-body">

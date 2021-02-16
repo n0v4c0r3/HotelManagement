@@ -9,7 +9,7 @@ include('include/header.php');
 
             <div class="card mb-4">
                 <div class="card-header">
-                    <i class="fas fa-home mr-1"></i>
+                    <i class="fas fa-comment-alt mr-1"></i>
                     Feedbacks/messages
                 </div>
                 <div class="card-body">

@@ -40,7 +40,7 @@ if(isset($_POST["delete"]))
 
             <div class="card mb-4">
                 <div class="card-header">
-                    <i class="fas fa-home mr-1"></i>
+                    <i class="fas fa-plus-circle mr-1"></i>
                     Add Staff
                 </div>
                 <div class="card-body">
@@ -80,7 +80,7 @@ if(isset($_POST["delete"]))
 
             <div class="card mb-4">
                 <div class="card-header">
-                    <i class="fas fa-home mr-1"></i>
+                    <i class="fas fa-concierge-bell mr-1"></i>
                     All Staff
                 </div>
                 <div class="card-body">
