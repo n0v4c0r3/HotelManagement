@@ -26,7 +26,7 @@ $result = mysqli_fetch_row($data);
 $avlKroom = $result[0];
 
 // total income
-$sql = "SELECT sum(`Room_total`) as totalincome FROM `reservation_table` WHERE `status` = 2";
+$sql = "SELECT sum(`Room_total`) as totalincome FROM `reservation_table` WHERE `status` = 1";
 $data = $conn->query($sql);
 $result =$data->fetch_assoc();
 $totalincome = $result["totalincome"];
@@ -119,7 +119,7 @@ $totalguest = $result["totalguest"];
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table mr-1"></i>
-                    Recent Booking
+                    New Booking
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">

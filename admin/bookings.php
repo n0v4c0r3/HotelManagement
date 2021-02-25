@@ -21,7 +21,7 @@ if(isset($_POST["Delete"]))
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-tasks mr-1"></i>
-                    All Customers
+                    Current Customers
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -40,7 +40,7 @@ if(isset($_POST["Delete"]))
                             <tbody>
 
                                 <?php
-                                            $sql = "SELECT * FROM `reservation_table` WHERE `status` = '0' or `status` = '1' ORDER BY `Rev_id` asc ";
+                                            $sql = "SELECT * FROM `reservation_table` WHERE `status` = '0' or `status` = '1' ORDER BY `Rev_id` desc ";
                                             $result = $conn->query($sql);
                                             while($row = $result->fetch_assoc())
                                             {
@@ -57,13 +57,6 @@ if(isset($_POST["Delete"]))
 
                                                     echo '
                                                     <a href="BookRequest.php" class="btn btn-success">Accept Booking</a>
-
-                                                    <form action="" method="post" class="d-inline">
-                                                        <input type="hidden" name="id" value='.$row["Rev_id"].'>
-                                                        <button class="btn btn-danger" name="Delete" type="submit">
-                                                        <i class="fas fa-trash"></i>
-                                                        </button>
-                                                    </form>
                                                     ';
 
                                                     }

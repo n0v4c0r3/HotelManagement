@@ -5,9 +5,13 @@ include('include/header.php');
 if(isset($_POST["reject"]))
 {
     $id = $_POST["id"];
+    $rno = $_POST["roomid"];
 
-    $sql = "UPDATE `reservation_table` SET `status`= 2 WHERE `Rev_id`= '{$_POST["id"]}'";
+    $sql = "UPDATE `reservation_table` SET `status`= 2 WHERE `Rev_id`= '{$id}'";
     $conn->query($sql);
+    // update room
+    $sql2 = "UPDATE `room_table` SET `Room_status`= '0' WHERE `RoomNo` =  '{$rno}'";
+    $conn->query($sql2);
     echo '
     <script>
     alert("Rejected");
@@ -64,6 +68,7 @@ if(isset($_POST["reject"]))
 
                                                 <form action="" method="POST" class="d-inline">
                                                     <input type="hidden" name="id" value='.$row["Rev_id"].'>
+                                                    <input type="hidden" name="roomid" value='.$row["Rev_roomno"].'>
                                                     <button type="submit" class="btn btn-danger m-2 " name="reject">Reject</button>
                                                 </form>
                                                 

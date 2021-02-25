@@ -67,12 +67,12 @@ $data = $ret->fetch_assoc();
             <div class="col p-5">
                 <div class="d-flex align-items-start">
                     <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                      <button class="nav-link active" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="true">Profile</buttona>
-                      <button class="nav-link " id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Bookings</button>
+                      <button class=" btn my-2 nav-link " id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="true">Profile</buttona>
+                      <button class=" btn my-2 nav-link active" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Bookings</button>
                       <a href="logout.php" class="btn  "><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
                     </div>
                     <div class="tab-content" id="v-pills-tabContent">
-                      <div class="tab-pane fade show active " id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                      <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                           <div class="row m-3 p-5">
                             <div class="col">
                                 <p class="text-secondary">Name</p>
@@ -86,7 +86,7 @@ $data = $ret->fetch_assoc();
                               </div>
                           </div>
                       </div>
-                      <div class="tab-pane fade " id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                      <div class="tab-pane fade show active " id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
                           <div class="table-responsive m-4">
                               <table class="table">
                                   <thead>
@@ -102,7 +102,7 @@ $data = $ret->fetch_assoc();
                                   </thead>
                                   <tbody>
                                     <?Php
-                                      $query = "SELECT * FROM `reservation_table` Where `Acid` = '$_SESSION[uid]'";
+                                      $query = "SELECT * FROM `reservation_table` Where `Acid` = '$_SESSION[uid]' order by `Rev_id` desc";
                                       $ret = $conn->query($query);
                                       while($row = $ret->fetch_assoc())
                                       {
