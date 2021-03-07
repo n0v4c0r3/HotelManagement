@@ -52,6 +52,7 @@ if(isset($_POST["adddroom"]))
   // insert data
   $sql = "INSERT INTO `reservation`(`Acid`,`Rev_name`, `Rev_email`, `Rev_phone`, `Rev_IdnPan`, `Rev_Add`, `Rev_Sdate`, `Rev_Edate`, `rev_adults`, `rev_child`, `rev_totalguest`, `Rev_roomno`, `Rev_roomtype`, `Room_total`, `status`) 
   VALUES ('$acid','$Cname','$Cmail','$Cphone','$Cidn','$Caddrs','$Cindate','$Coutdate','$Cadult','$Cchild','$totalguest','$Roomno','$RoomType','$totalprice','0')";
+  
   $conn->query($sql);
   echo '
   <script>
@@ -59,13 +60,7 @@ if(isset($_POST["adddroom"]))
   window.location.href = "/account.php";
   </script>';
 
-  // Disable room
-  $sql = "UPDATE `rooms` SET `Room_status`= 1 WHERE `Roomid` = '$RoomID'";
-  $conn->query($sql);
-  echo '
-  <script>
-  window.location.href = "/";
-  </script>';
+
   
 }
 
@@ -93,7 +88,7 @@ if(isset($_POST["adddroom"]))
 
   <nav class="navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container">
-      <a class="navbar-brand text-dark" href="#">Page Title - SB Admin</a>
+      <a class="navbar-brand text-dark" href="#">The RIVERWAYS RETREAT</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -169,21 +164,21 @@ if(isset($_POST["adddroom"]))
           <div class="form-group row">
             <label for="" class="col-sm-2 col-form-label text-dark">Full Name</label>
             <div class="col-sm-10">
-              <input type="text"  class="form-control" placeholder="Full Name" name="cname" required>
+              <input type="text"  class="form-control" placeholder="Full Name" name="cname" value="<?php echo $_SESSION["uname"] ?>" required>
             </div>
           </div>
 
           <div class="form-group row">
             <label for="" class="col-sm-2 col-form-label text-dark">Email</label>
             <div class="col-sm-10">
-              <input type="email"  class="form-control" placeholder="Email Address" name="cmail" >
+              <input type="email"  class="form-control" placeholder="Email Address" value="<?php echo $_SESSION["uemail"] ?>" name="cmail" >
             </div>
           </div>
 
           <div class="form-group row">
             <label for="" class="col-sm-2 col-form-label text-dark">Phone No</label>
             <div class="col-sm-10">
-              <input type="text"  class="form-control" placeholder="Phone Number" name="cphn" required >
+              <input type="text"  class="form-control" pattern="[7-9]{1}[0-9]{9}"  placeholder="e.g : +919876543210" name="cphn" required >
             </div>
           </div>
 
@@ -197,7 +192,7 @@ if(isset($_POST["adddroom"]))
           <div class="form-group row">
             <label for="" class="col-sm-2 col-form-label text-dark">Identity(PAN)</label>
             <div class="col-sm-10">
-              <input type="text"  class="form-control text-uppercase" placeholder="PAN CARD Number" name="cidn" required>
+              <input type="text"  class="form-control text-uppercase" style="text-transform:uppercase" maxlength="10" minlength="10" placeholder="PAN CARD Number" name="cidn" required>
             </div>
           </div>
 

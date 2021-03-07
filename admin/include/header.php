@@ -87,7 +87,7 @@ include('Database.php');
                         </a>
                         <a class="nav-link" href="messages.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-comment-alt"></i></div>
-                            Messages
+                            Feedback
                         </a>
                     </div>
                 </div>

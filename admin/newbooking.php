@@ -6,12 +6,22 @@ if(isset($_POST["confirm"]))
 {
     $sql = "UPDATE `reservation` SET `status`= 1 WHERE `Rev_id`= '{$_POST["id"]}'";
     $conn->query($sql);
+
+    $sql2 = "UPDATE `rooms` SET `Room_status`= 1 WHERE `RoomNo` = '{$_POST["rno"]}'";
+    $conn->query($sql2);
+
+
     echo '
     <script>
     alert("Booking Completed");
     window.location.href = "bookings.php";
     </script>';
+
+    // Disable room
+   
 }
+
+
 
 ?>
 <div id="layoutSidenav_content">
@@ -112,6 +122,7 @@ if(isset($_POST["confirm"]))
                             <div class="text-center"> 
                             <form action="" method="post" class="d-inline">
                                 <input type="hidden" name="id" value='.$row["Rev_id"].'>
+                                <input type="hidden" name="rno" value='.$row["Rev_roomno"].'>
                                 <button class="btn btn-success" name="confirm" type="submit">
                                 <i class="fas fa-check-double"></i> Confirm
                                 </button>

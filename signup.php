@@ -10,7 +10,7 @@ else{
     
     include('Database.php');
 
-    $csql = "SELECT `email` FROM `users` WHERE `email` = '{$_POST["email"]}'";
+    $csql = "SELECT `uemail` FROM `users` WHERE `uemail` = '{$_POST["email"]}'";
     $dta = $conn->query($csql);
 
     if(mysqli_num_rows($dta) > 0)
@@ -27,7 +27,7 @@ else{
     else
     {
         if(isset($_POST["Createac"]))
-    {
+      {
         $name = $_POST["name"];
         $email = $_POST["email"];
         $phone = $_POST["phone"];
@@ -42,28 +42,9 @@ else{
         window.location.href = "login.php";
         </script>
         ';
-    }
+      }
     }
 
-
-
-    if(isset($_POST["Createac"]))
-    {
-        $name = $_POST["name"];
-        $email = $_POST["email"];
-        $phone = $_POST["phone"];
-        $password = $_POST["password"];
-    
-        $query = "INSERT INTO `users`(`uname`, `uemail`, `uphone`, `upassword`) 
-        VALUES ('$name','$email','$phone','$password')";
-        $conn->query($query);
-        echo '
-        <script>
-        alert("Account Created");
-        window.location.href = "login.php";
-        </script>
-        ';
-    }
 }
 
 ?>
@@ -176,7 +157,7 @@ font-size: 20px;
                      <input type="email" name="email"  class="form-control my-input" id="email" placeholder="Email">
                   </div>
                   <div class="form-group">
-                     <input type="number" min="0" name="phone" id="phone"  class="form-control my-input" placeholder="Phone">
+                     <input type="number" min="0" name="phone" id="phone"  class="form-control my-input" pattern="[7-9]{1}[0-9]{9}"  placeholder="e.g : +919876543210" >
                   </div>
                   <div class="form-group">
                      <input type="text" name="password" class="form-control my-input" placeholder="password">
