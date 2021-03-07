@@ -14,7 +14,7 @@ if(isset($_POST["sendmsg"]))
   
   $msg = $conn->real_escape_string($_POST["message"]);
 
-  $sql = "INSERT INTO `message`(`name`, `mail`, `sub`, `msg`) VALUES ('$name','$email','$subject','$msg')";
+  $sql = "INSERT INTO `feedback`(`msg_name`, `msg_mail`, `msg_sub`, `msg_body`) VALUES ('$name','$email','$subject','$msg')";
   $conn->query($sql);
   echo '
   <script>

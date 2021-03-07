@@ -13,7 +13,7 @@ if(isset($_POST["adddroom"]))
 
     // check alredy exist room
 
-    $sqlc = "SELECT * FROM `room_table` WHERE `RoomNo` = $number";
+    $sqlc = "SELECT * FROM `rooms` WHERE `RoomNo` = $number";
     $result = $conn->query($sqlc);
     if($result->num_rows > 0 )
     {
@@ -21,7 +21,7 @@ if(isset($_POST["adddroom"]))
     }else
     {
         
-    $sql = "INSERT INTO `room_table`(`RoomNo`, `RoomType`, `RoomPrice`, `Room_status`) VALUES ('$number','$Type','$Price', 0)";
+    $sql = "INSERT INTO `rooms`(`RoomNo`, `RoomType`, `RoomPrice`, `Room_status`) VALUES ('$number','$Type','$Price', 0)";
     $conn->query($sql);
     echo '
     <script>

@@ -17,7 +17,7 @@ else
         $email = $_POST["uemail"];
         $pass = $_POST["upass"];
 
-        $sql = "SELECT `id`, `name`  FROM `customers` WHERE `email` = '{$email}' AND `password` = '{$pass}'";
+        $sql = "SELECT `id`, `name`  FROM `users` WHERE `uemail` = '{$email}' AND `upassword` = '{$pass}'";
         // echo $sql; die();
         $result = $conn->query($sql);
         if(mysqli_num_rows($result) > 0)

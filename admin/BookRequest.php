@@ -7,10 +7,10 @@ if(isset($_POST["reject"]))
     $id = $_POST["id"];
     $rno = $_POST["roomid"];
 
-    $sql = "UPDATE `reservation_table` SET `status`= 2 WHERE `Rev_id`= '{$id}'";
+    $sql = "UPDATE `reservation` SET `status`= 2 WHERE `Rev_id`= '{$id}'";
     $conn->query($sql);
     // update room
-    $sql2 = "UPDATE `room_table` SET `Room_status`= '0' WHERE `RoomNo` =  '{$rno}'";
+    $sql2 = "UPDATE `rooms` SET `Room_status`= '0' WHERE `RoomNo` =  '{$rno}'";
     $conn->query($sql2);
     echo '
     <script>
@@ -47,7 +47,7 @@ if(isset($_POST["reject"]))
 
                             <tbody>
                                 <?php
-                                    $sql = "SELECT * FROM `reservation_table` WHERE `status` = '0'  ORDER BY `Rev_id` asc";
+                                    $sql = "SELECT * FROM `reservation` WHERE `status` = '0'  ORDER BY `Rev_id` asc";
                                     $result = $conn->query($sql);
                                     while($row = $result->fetch_assoc())
                                     {

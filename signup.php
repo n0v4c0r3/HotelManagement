@@ -10,7 +10,7 @@ else{
     
     include('Database.php');
 
-    $csql = "SELECT `email` FROM `customers` WHERE `email` = '{$_POST["email"]}'";
+    $csql = "SELECT `email` FROM `users` WHERE `email` = '{$_POST["email"]}'";
     $dta = $conn->query($csql);
 
     if(mysqli_num_rows($dta) > 0)
@@ -33,7 +33,7 @@ else{
         $phone = $_POST["phone"];
         $password = $_POST["password"];
     
-        $query = "INSERT INTO `customers`(`name`, `email`, `phone`, `password`) 
+        $query = "INSERT INTO `users`(`uname`, `uemail`, `uphone`, `upassword`) 
         VALUES ('$name','$email','$phone','$password')";
         $conn->query($query);
         echo '
@@ -54,7 +54,7 @@ else{
         $phone = $_POST["phone"];
         $password = $_POST["password"];
     
-        $query = "INSERT INTO `customers`(`name`, `email`, `phone`, `password`) 
+        $query = "INSERT INTO `users`(`uname`, `uemail`, `uphone`, `upassword`) 
         VALUES ('$name','$email','$phone','$password')";
         $conn->query($query);
         echo '

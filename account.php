@@ -6,7 +6,7 @@ if(!$_SESSION["uid"])
   header("Location: /");
 }
 
-$query = "SELECT * FROM `customers` WHERE `id` = '{$_SESSION["uid"]}' ";
+$query = "SELECT * FROM `users` WHERE `uid` = '{$_SESSION["uid"]}' ";
 $ret=$conn->query($query);
 $data = $ret->fetch_assoc();
 ?>
@@ -80,9 +80,9 @@ $data = $ret->fetch_assoc();
                                 <p class="text-secondary">Phone</p>
                             </div>
                               <div class="col">
-                                <p class="text-dark"><?php echo $data["name"]?></p>
-                                <p class="text-dark"><?php echo $data["email"]?></p>
-                                <p class="text-dark"><?php echo $data["phone"]?></p>
+                                <p class="text-dark"><?php echo $data["uname"]?></p>
+                                <p class="text-dark"><?php echo $data["uemail"]?></p>
+                                <p class="text-dark"><?php echo $data["uphone"]?></p>
                               </div>
                           </div>
                       </div>
@@ -102,7 +102,7 @@ $data = $ret->fetch_assoc();
                                   </thead>
                                   <tbody>
                                     <?Php
-                                      $query = "SELECT * FROM `reservation_table` Where `Acid` = '$_SESSION[uid]' order by `Rev_id` desc";
+                                      $query = "SELECT * FROM `reservation` Where `Acid` = '$_SESSION[uid]' order by `Rev_id` desc";
                                       $ret = $conn->query($query);
                                       while($row = $ret->fetch_assoc())
                                       {

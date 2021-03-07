@@ -50,7 +50,7 @@ if(isset($_POST["adddroom"]))
   $totalprice = $totalday * $price;
  
   // insert data
-  $sql = "INSERT INTO `reservation_table`(`Acid`,`Rev_name`, `Rev_email`, `Rev_phone`, `Rev_IdnPan`, `Rev_Add`, `Rev_Sdate`, `Rev_Edate`, `rev_adults`, `rev_child`, `rev_totalguest`, `Rev_roomno`, `Rev_roomtype`, `Room_total`, `status`) 
+  $sql = "INSERT INTO `reservation`(`Acid`,`Rev_name`, `Rev_email`, `Rev_phone`, `Rev_IdnPan`, `Rev_Add`, `Rev_Sdate`, `Rev_Edate`, `rev_adults`, `rev_child`, `rev_totalguest`, `Rev_roomno`, `Rev_roomtype`, `Room_total`, `status`) 
   VALUES ('$acid','$Cname','$Cmail','$Cphone','$Cidn','$Caddrs','$Cindate','$Coutdate','$Cadult','$Cchild','$totalguest','$Roomno','$RoomType','$totalprice','0')";
   $conn->query($sql);
   echo '
@@ -60,7 +60,7 @@ if(isset($_POST["adddroom"]))
   </script>';
 
   // Disable room
-  $sql = "UPDATE `room_table` SET `Room_status`= 1 WHERE `Roomid` = '$RoomID'";
+  $sql = "UPDATE `rooms` SET `Room_status`= 1 WHERE `Roomid` = '$RoomID'";
   $conn->query($sql);
   echo '
   <script>

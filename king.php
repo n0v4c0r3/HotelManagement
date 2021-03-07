@@ -73,7 +73,7 @@ session_start();
       <h2>King-size Room</h2>
       <div class="row">
         <?php
-        $sql2 = "SELECT * FROM `room_table` where `Room_status` = 0 AND `RoomType` = 'King Size Bed' ORDER BY `RoomNo` ASC";
+        $sql2 = "SELECT * FROM `rooms` where `Room_status` = 0 AND `RoomType` = 'King Size Bed' ORDER BY `RoomNo` ASC";
         $data2 = $conn->query($sql2);
 				while($row = $data2->fetch_assoc()){
            echo ' <div class="col m-3">

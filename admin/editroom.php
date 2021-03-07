@@ -4,7 +4,7 @@ include('include/header.php');
 // get details
 if(isset($_POST["Edit"]))
 {
-    $sql = "SELECT * FROM `room_table` WHERE `Roomid` = {$_POST["id"]}";
+    $sql = "SELECT * FROM `rooms` WHERE `Roomid` = {$_POST["id"]}";
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
 }
@@ -15,7 +15,7 @@ if(isset($_POST["updroom"]))
     $Type = $_POST["rtype"];
     $Price = $_POST["rprice"];
 
-    $sql = "UPDATE `room_table` SET `RoomType`='$Type',`RoomPrice`='$Price' WHERE `Roomid`='$id'";
+    $sql = "UPDATE `rooms` SET `RoomType`='$Type',`RoomPrice`='$Price' WHERE `Roomid`='$id'";
     $conn->query($sql);
     echo '
     <script>

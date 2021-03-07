@@ -3,37 +3,37 @@ error_reporting(0);
 include('include/header.php');
 
 // new request
-$sql = "SELECT count(`Rev_id`) FROM `reservation_table` WHERE `status` = 0";
+$sql = "SELECT count(`Rev_id`) FROM `reservation` WHERE `status` = 0";
 $data = $conn->query($sql);
 $result = mysqli_fetch_row($data);
 $newreq = $result[0];
 
 // total Room Available
 
-$sql = "SELECT count(`Roomid`) FROM `room_table` WHERE `Room_status` = 0 AND `RoomType` = 'Single Bed'";
+$sql = "SELECT count(`Roomid`) FROM `rooms` WHERE `Room_status` = 0 AND `RoomType` = 'Single Bed'";
 $data = $conn->query($sql);
 $result = mysqli_fetch_row($data);
 $avlSroom = $result[0];
 
-$sql = "SELECT count(`Roomid`) FROM `room_table` WHERE `Room_status` = 0 AND `RoomType` = 'Double Bed'";
+$sql = "SELECT count(`Roomid`) FROM `rooms` WHERE `Room_status` = 0 AND `RoomType` = 'Double Bed'";
 $data = $conn->query($sql);
 $result = mysqli_fetch_row($data);
 $avlDroom = $result[0];
 
-$sql = "SELECT count(`Roomid`) FROM `room_table` WHERE `Room_status` = 0 AND `RoomType` = 'King Size Bed'";
+$sql = "SELECT count(`Roomid`) FROM `rooms` WHERE `Room_status` = 0 AND `RoomType` = 'King Size Bed'";
 $data = $conn->query($sql);
 $result = mysqli_fetch_row($data);
 $avlKroom = $result[0];
 
 // total income
-$sql = "SELECT sum(`Room_total`) as totalincome FROM `reservation_table` WHERE `status` = 1";
+$sql = "SELECT sum(`Room_total`) as totalincome FROM `reservation` WHERE `status` = 1";
 $data = $conn->query($sql);
 $result =$data->fetch_assoc();
 $totalincome = $result["totalincome"];
 
 //total guest\
 
-$sql = "SELECT sum(`rev_totalguest`) as totalguest FROM `reservation_table` WHERE `status` = 1 OR `status` = 2";
+$sql = "SELECT sum(`rev_totalguest`) as totalguest FROM `reservation` WHERE `status` = 1 OR `status` = 2";
 $data = $conn->query($sql);
 $result =$data->fetch_assoc();
 $totalguest = $result["totalguest"];
@@ -138,7 +138,7 @@ $totalguest = $result["totalguest"];
 
                             <tbody>
                                 <?php
-                                    $sql = "SELECT * FROM `reservation_table` WHERE `status` = '0'  ORDER BY `Rev_id` asc";
+                                    $sql = "SELECT * FROM `reservation` WHERE `status` = '0'  ORDER BY `Rev_id` asc";
                                     $result = $conn->query($sql);
                                     while($row = $result->fetch_assoc())
                                     {

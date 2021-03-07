@@ -4,10 +4,10 @@ include('include/header.php');
 // checkout
 if(isset($_POST["checkout"]))
 {
-    $sql = "UPDATE `reservation_table` SET `status`= 2 WHERE `Rev_id`= '{$_POST["id"]}'";
+    $sql = "UPDATE `reservation` SET `status`= 2 WHERE `Rev_id`= '{$_POST["id"]}'";
     $conn->query($sql);
 
-    $sql2 = "UPDATE `room_table` SET `Room_status`= 0 WHERE `RoomNo`= '{$_POST["rno"]}'";
+    $sql2 = "UPDATE `rooms` SET `Room_status`= 0 WHERE `RoomNo`= '{$_POST["rno"]}'";
     $conn->query($sql2);
     echo '
     <script>
@@ -35,7 +35,7 @@ if(isset($_POST["checkout"]))
                     <?php
                         if(isset($_POST["View"]))
                         {
-                            $sql = "SELECT * FROM `reservation_table` WHERE `Rev_id` = '{$_POST["id"]}'";
+                            $sql = "SELECT * FROM `reservation` WHERE `Rev_id` = '{$_POST["id"]}'";
                             $result = $conn->query($sql);
                             $row = $result->fetch_assoc();
                             echo '

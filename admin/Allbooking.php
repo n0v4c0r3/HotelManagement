@@ -4,7 +4,7 @@ include('include/header.php');
 // delete
 if(isset($_POST["Delete"]))
 {
-    $sql = "DELETE FROM `reservation_table` WHERE `Rev_id`= '{$_POST["id"]}'";
+    $sql = "DELETE FROM `reservation` WHERE `Rev_id`= '{$_POST["id"]}'";
     $conn->query($sql);
     echo '
     <script>
@@ -40,7 +40,7 @@ if(isset($_POST["Delete"]))
                             <tbody>
 
                                 <?php
-                                            $sql = "SELECT * FROM `reservation_table` ORDER BY `Rev_id` asc";
+                                            $sql = "SELECT * FROM `reservation` ORDER BY `Rev_id` asc";
                                             $result = $conn->query($sql);
                                             while($row = $result->fetch_assoc())
                                             {

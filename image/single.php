@@ -55,7 +55,7 @@ include('Database.php');
     <h2>Single Bed</h2>    
     <div class="row">
           <?php
-        $sql2 = "SELECT * FROM `room_table` where `Room_status` = 0 AND `RoomType` = 'single' ORDER BY `room_table`.`RoomNo` ASC";
+        $sql2 = "SELECT * FROM `rooms` where `Room_status` = 0 AND `RoomType` = 'single' ORDER BY `rooms`.`RoomNo` ASC";
         $data2 = $conn->query($sql2);
 				while($row = $data2->fetch_assoc()){
            echo ' <div class="col-md-4 mt-3 mb-2">

@@ -4,7 +4,7 @@ include('include/header.php');
 // confim
 if(isset($_POST["confirm"]))
 {
-    $sql = "UPDATE `reservation_table` SET `status`= 1 WHERE `Rev_id`= '{$_POST["id"]}'";
+    $sql = "UPDATE `reservation` SET `status`= 1 WHERE `Rev_id`= '{$_POST["id"]}'";
     $conn->query($sql);
     echo '
     <script>
@@ -32,7 +32,7 @@ if(isset($_POST["confirm"]))
                     <?php
                         if(isset($_POST["View"]))
                         {
-                            $sql = "SELECT * FROM `reservation_table` WHERE `Rev_id` = '{$_POST["id"]}'";
+                            $sql = "SELECT * FROM `reservation` WHERE `Rev_id` = '{$_POST["id"]}'";
                             $result = $conn->query($sql);
                             $row = $result->fetch_assoc();
                             echo '

@@ -23,15 +23,15 @@ include('include/header.php');
                             <span></span>
                             <tbody>
                                 <?php
-                                    $sql = "SELECT * FROM `message` ORDER BY `id` desc";
+                                    $sql = "SELECT * FROM `feedback` ORDER BY `msg_id` desc";
                                     $result = $conn->query($sql);
                                     while($row = $result->fetch_assoc())
                                     {
                                         echo '
                                             <tr>
-                                                <td>'.$row["name"].'</td>
-                                                <td>'.$row["mail"].'</td>
-                                                <td><span class="text-danger">'.$row["sub"].'</span></br><span class="text-primary">'.$row["msg"].'</span></td>
+                                                <td>'.$row["msg_name"].'</td>
+                                                <td>'.$row["msg_mail"].'</td>
+                                                <td><span class="text-danger">'.$row["msg_sub"].'</span></br><span class="text-primary">'.$row["msg_body"].'</span></td>
                                             </tr>
                                         ';
                                     }
