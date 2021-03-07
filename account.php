@@ -97,6 +97,7 @@ $data = $ret->fetch_assoc();
                                           <th>From</th>
                                           <th>To </th>
                                           <th>Total</th>
+                                          <th>Room Confirmation</th>
                                           <th>Status</th>
                                       </tr>
                                   </thead>
@@ -114,6 +115,14 @@ $data = $ret->fetch_assoc();
                                           <td>'.$row["Rev_Sdate"].'</td>
                                           <td>'.$row["Rev_Edate"].'</td>
                                           <td>'.$row["Room_total"].'</td>';
+                                        if($row["acnf"] == 0)
+                                        {
+                                          echo '<td class="text-info">waiting for confirmation</td>';
+                                        }
+                                        else if($row["acnf"] == 1)
+                                        {
+                                          echo '<td class="text-success">confirmed</td>';
+                                        }
                                         if($row["status"] == 0)
                                         {
                                           echo '<td class="text-secondary">Pending</td>';
@@ -124,6 +133,7 @@ $data = $ret->fetch_assoc();
                                         else if($row["status"] == 2){
                                           echo '<td class="text-danger">Rejected</td>';
                                         }
+                                        
                                         echo '</tr>
                                         ';
                                       }

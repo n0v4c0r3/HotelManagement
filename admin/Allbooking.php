@@ -9,7 +9,7 @@ if(isset($_POST["Delete"]))
     echo '
     <script>
     alert("Data Deleted");
-    window.location.href = "bookings.php";
+    window.location.href = "Allbooking.php";
     </script>';
 }
  ?>

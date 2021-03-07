@@ -69,7 +69,7 @@ include('Database.php');
                         </a>
                         <a class="nav-link" href="bookings.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-tasks"></i></div>
-                            Manage Bookings
+                            checkin 
                         </a>
                         <a class="nav-link" href="Allbooking.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-bars"></i></div>

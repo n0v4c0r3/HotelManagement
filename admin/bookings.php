@@ -60,23 +60,24 @@ if(isset($_POST["Delete"]))
                                                     ';
 
                                                     }
+                                                    
                                                     else if($row["status"] == 1)
                                                     {
                                                         echo '
                
                                                         <form action="viewdetails.php" method="POST" class="d-inline"> 
                                                             <input type="hidden" name="id" value='. $row["Rev_id"] .'>
-                                                            <button type="submit" class="btn btn-info" name="View" value="View">
-                                                            <i class="fas fa-eye"></i> View/Confirm
+                                                            <button type="submit" class="btn btn-success" name="View" value="View">
+                                                            <i class="fas fa-eye"></i> CheckOut
                                                             </button>
                                                         </form>
 
-                                                        <form action="" method="post" class="d-inline">
-                                                            <input type="hidden" name="id" value='.$row["Rev_id"].'>
-                                                            <button class="btn btn-danger" name="Delete" type="submit">
-                                                            <i class="fas fa-trash"></i>
-                                                            </button>
-                                                        </form>
+                                                        <!-- <form action="" method="post" class="d-inline">
+                                                        <input type="hidden" name="id" value='.$row["Rev_id"].'>
+                                                        <button class="btn btn-danger" name="Delete" type="submit">
+                                                        <i class="fas fa-trash"></i>
+                                                        </button>
+                                                    </form> -->
                                                         ';
                                                     }
                                                     else if($row["status"] == 2)
@@ -89,13 +90,13 @@ if(isset($_POST["Delete"]))
                                                             <i class="fas fa-eye"></i> View/Confirm
                                                             </button>
                                                         </form>
-
-                                                        <form action="" method="post" class="d-inline">
+                                                        
+                                                        <!-- <form action="" method="post" class="d-inline">
                                                             <input type="hidden" name="id" value='.$row["Rev_id"].'>
                                                             <button class="btn btn-danger" name="Delete" type="submit">
                                                             <i class="fas fa-trash"></i>
                                                             </button>
-                                                        </form>';
+                                                        </form> -->';
                                                     }
                                                         
                                                 echo '
@@ -110,7 +111,8 @@ if(isset($_POST["Delete"]))
                     </div>
                 </div>
             </div>
+            <!--  -->
         </div>
     </main>
-
+    
     <?php include('include/footer.php') ?>

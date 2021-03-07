@@ -18,6 +18,19 @@ if(isset($_POST["reject"]))
     window.location.href = "bookings.php";
     </script>';
 }
+
+if(isset($_POST["advcnf"]))
+{
+    $id = $_POST["id"];
+
+    $sql = "UPDATE `reservation` SET `acnf`= 1 WHERE `Rev_id` = '{$id}'";
+    $conn->query($sql);
+    echo '
+    <script>
+    alert("Room confirmed");
+    window.location.href = "BookRequest.php";
+    </script>';
+}
  ?>
 <div id="layoutSidenav_content">
     <main>
@@ -58,12 +71,20 @@ if(isset($_POST["reject"]))
                                                 <td class="text-success">'.$row["Rev_Sdate"].'</td>
                                                 <td class="text-danger">'.$row["Rev_Edate"].'</td>
                                                 <td class="text-success">'.$row["Room_total"].'</td>
-                                                <td class="text-danger">'.$row["rev_totalguest"].'</td>
+                                                <td class="text-danger">'.$row["rev_totalguest"].'</td>';
+                                        if($row["acnf"] == 0)
+                                        {
+                                            echo '
+                                            <td>
+                                                
+                                                <form action="" method="POST" class="d-inline">
+                                                    <input type="hidden" name="id" value='.$row["Rev_id"].'>
+                                                    <button type="submit" class="btn btn-primary m-2 " name="advcnf">Approve Room</button>
+                                                </form>
 
-                                                <td>
                                                 <form action="newbooking.php" method="POST" class="d-inline">
                                                     <input type="hidden" name="id" value='.$row["Rev_id"].'>
-                                                    <button type="submit" class="btn btn-primary m-2 " name="View">Approve</button>
+                                                    <button type="submit" class="btn btn-success m-2 " name="View" disabled>Checkin</button >
                                                 </form>
 
                                                 <form action="" method="POST" class="d-inline">
@@ -71,9 +92,28 @@ if(isset($_POST["reject"]))
                                                     <input type="hidden" name="roomid" value='.$row["Rev_roomno"].'>
                                                     <button type="submit" class="btn btn-danger m-2 " name="reject">Reject</button>
                                                 </form>
+                                            </td>';
+
+                                        }else if($row["acnf"] == 1)
+                                        {
+                                            echo '
+                                            <td>
+                                            <p  class="text-primary d-inline" m-2 " >Approve Room</p>
+                                            <form action="newbooking.php" method="POST" class="d-inline">
+                                                <input type="hidden" name="id" value='.$row["Rev_id"].'>
+                                                <button type="submit" class="btn btn-success m-2 " name="View">Checkin</button>
+                                            </form>
+
+                                            <form action="" method="POST" class="d-inline">
+                                                <input type="hidden" name="id" value='.$row["Rev_id"].'>
+                                                <input type="hidden" name="roomid" value='.$row["Rev_roomno"].'>
+                                                <button type="submit" class="btn btn-danger m-2 " name="reject">Reject</button>
+                                            </form>
+                                            </td>';
+                                        }
                                                 
-                                                </td>
-                                            </tr>
+
+                                        echo '</tr>
                                         ';
                                     }
                                 ?>

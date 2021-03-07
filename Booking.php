@@ -56,7 +56,7 @@ if(isset($_POST["adddroom"]))
   $conn->query($sql);
   echo '
   <script>
-  alert("Room Confirmation Will Be Notified on EMail or Phone");
+  alert("you will be notified shortly");
   window.location.href = "/account.php";
   </script>';
 
